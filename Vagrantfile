@@ -20,6 +20,7 @@ Vagrant.require_version '>= 2.4'
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     if File.exist? aliasesPath then
         config.vm.provision "file", source: aliasesPath, destination: "/tmp/bash_aliases"
+        config.vm.box_version = "14.0.1"
         config.vm.provision "handle_aliases", type: "shell" do |s|
             s.inline = "awk '{ sub(\"\r$\", \"\"); print }' /tmp/bash_aliases > /home/vagrant/.bash_aliases && chown vagrant:vagrant /home/vagrant/.bash_aliases"
         end
