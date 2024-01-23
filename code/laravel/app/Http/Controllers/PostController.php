@@ -3,21 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class PostController extends Controller
 {
-    private $posts = [
-            'Model',
-            'View',
-            'Controller'
-        ];
 
     public function index() {
-        return view('index')->with(['posts' => $this->posts]);
+        // $posts = Post::all();
+        // $posts = Post::orderBy('created_at','desc')->get();
+        $posts = Post::latest()->get();
+
+        return view('index')->with(['posts' => $posts]);
     }
 
     public function text($id) {
-        return view('posts.text')->with(['post' => $this->posts[$id]]);
+
+        $post = Post::findOrfail($id);
+
+        return view('posts.text')->with(['post' => $post]);
     }
 }
 ?>
