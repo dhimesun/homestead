@@ -3,6 +3,8 @@ h1{
     border-bottom: 1px solid black;
     margin: 20px 0;
     padding-bottom: 20px;
+    display: flex;
+    align-items: center;
 }
 
 li{
@@ -16,5 +18,37 @@ li{
 
 .re{
     font-size: 14px;
-    
+
+}
+
+h1 > a {
+    font-size: 12px;
+    background-color: aqua;
+    border:1px solid;
+    border-radius: 3px;
+    padding: 3px 10px;
+    margin-left: auto;
+    text-decoration: none;
+}
+
+input, textarea{
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.btn {
+    text-align: right;
+}
+
+.error{
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+button {
+    margin-left: 10px ;
+    vertical-align: 2px;
 }
