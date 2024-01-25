@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Requests\PostRequest;
 
+
 class PostController extends Controller
 {
 
@@ -59,6 +60,16 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('index.posts');
+    }
+
+    public function search(Request $request) {
+        $title = $request->input('title');
+        if ($title) {
+            $posts = Post::where('title', 'LIKE', "%{$title}%")->get();
+        } else {
+            $posts = collect();
+        }
+        return view('posts.search')->with(['posts' => $posts]);
     }
 }
 ?>

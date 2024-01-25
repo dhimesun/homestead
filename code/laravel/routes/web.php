@@ -17,6 +17,9 @@ use App\Http\Controllers\PostController;
 Route::get('/', [PostController::class,'index'])
     ->name('index.posts');
 
+Route::get('/posts/search', [PostController::class,'search'])
+    ->name('search.posts');
+
 Route::get('/posts/{id}', [PostController::class,'text'])
     ->name('text.posts')
     ->where('id','[0-9]+');
